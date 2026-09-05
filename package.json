@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "deploy": "tsc -b && vite build --base=/digestive-tracker/ && gh-pages -d dist --dotfiles"
+    "deploy": "tsc -b && vite build --base=/digestive-tracker/ --mode demo && gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "lucide-react": "^1.39.0",
