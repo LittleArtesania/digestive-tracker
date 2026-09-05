@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^1.39.0",
@@ -27,6 +28,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "@vitest/coverage-v8": "^5.0.0",
     "autoprefixer": "^10.5.4",
+    "gh-pages": "^6.3.0",
     "jsdom": "^30.0.1",
     "oxlint": "^1.79.0",
     "postcss": "^8.5.26",
