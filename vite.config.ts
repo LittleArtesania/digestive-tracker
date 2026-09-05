@@ -6,7 +6,6 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/digestive-tracker/',
   plugins: [
     react(),
     tailwindcss(),
@@ -22,8 +21,6 @@ export default defineConfig({
         background_color: '#FBF6EF',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/digestive-tracker/',
-        scope: '/digestive-tracker/',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
