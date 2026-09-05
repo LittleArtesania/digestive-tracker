@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/digestive-tracker/sw.js', { scope: '/digestive-tracker/' })})}
