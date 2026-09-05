@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ---- Color tokens: "warm private journal" palette ---- */
+  --color-paper: #FBF6EF;
+  --color-paper-dim: #F3ECE1;
+  --color-ink: #2C2620;
+  --color-ink-soft: #6B5F52;
+
+  /* Card/input backgrounds — separate from --color-paper so dark mode can
+     invert the page background without breaking "white card" surfaces. */
+  --color-surface: #FFFFFF;
+  /* Text on saturated accent buttons/pills — stays light in both themes,
+     unlike --color-paper which flips to a dark tone in dark mode. */
+  --color-on-accent: #FBF6EF;
+
+  --color-clay: #B5562C;
+  --color-clay-soft: #E7C4AC;
+  --color-clay-dim: #F7E8DD;
+  /* Separate from --color-clay: this is for clay used AS TEXT directly on the
+     page background, not as a button fill. In light mode the page background
+     and --color-on-accent happen to be the same tone, so one value serves
+     both roles — but that coincidence breaks in dark mode (see override below). */
+  --color-clay-text: #B5562C;
+
+  --color-lavender: #6F6B9C;
+  --color-lavender-soft: #D9D7EC;
+  --color-lavender-dim: #EFEEF7;
+
+  --color-sage: #7C9B74;
+  --color-sage-soft: #D6E3D1;
+  --color-sage-dim: #EEF3EC;
+
+  --color-line: #E7DDCE;
+  /* Stronger border for actual form controls (inputs, selects, unselected chips) —
+     --color-line alone is only 1.25:1 against white and fails the 3:1 non-text
+     contrast requirement for interactive component boundaries. */
+  --color-line-strong: #948D84;
+
+  /* ---- Type tokens ---- */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Radius tokens: intentionally NOT uniform everywhere ---- */
+  --radius-pill: 999px;
+  --radius-card: 1.25rem;
+  --radius-chip: 0.65rem;
+}
+
+/* Dark theme: applied by useAppliedTheme via a data-theme attribute on <html>.
+   Overriding the same custom properties means every utility built on these
+   tokens (bg-paper, text-ink, border-line, etc.) updates automatically —
+   no component needs a dark: variant. */
+[data-theme='dark'] {
+  --color-paper: #211C17;
+  --color-paper-dim: #2B241D;
+  --color-ink: #F3ECE1;
+  --color-ink-soft: #B8AA98;
+
+  --color-surface: #2B241D;
+
+  --color-clay: #A4603A;
+  --color-clay-soft: #6B3D22;
+  --color-clay-dim: #3A2718;
+  /* Dark paper is near-black and --color-on-accent is fixed light, so the
+     button-fill clay (tuned against on-accent) is too dark to read as text
+     directly on dark paper — this brighter value is tuned for that instead. */
+  --color-clay-text: #E0834F;
+
+  --color-lavender: #6F6C96;
+  --color-lavender-soft: #4B4770;
+  --color-lavender-dim: #2E2B45;
+
+  --color-sage: #9CC091;
+  --color-sage-soft: #3A4A34;
+  --color-sage-dim: #26301F;
+
+  --color-line: #3D362D;
+  --color-line-strong: #7A6C5A;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus ring, styled to match the brand rather than default blue */
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
