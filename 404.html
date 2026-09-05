@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Wellness</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages (https://github.com/rafgraph/spa-github-pages)
+      // GitHub Pages has no server-side rewrites, so a direct visit to a route
+      // like /dev/demo-data 404s. This encodes the intended path into a query
+      // string and redirects to index.html, which decodes it back (see the
+      // matching script in index.html) so React Router picks up correctly.
+      var pathSegmentsToKeep = 1
+      var l = window.location
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
